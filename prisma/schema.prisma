@@ -15,4 +15,14 @@ model Poll {
   title    String
   createAt DateTime @default(now())
   updateAt DateTime @default(now())
+
+  options PollOption[]
+}
+
+model PollOption {
+  id     String @id @default(uuid())
+  title  String
+  pollId String
+
+  poll Poll @relation(fields: [pollId], references: [id])
 }
