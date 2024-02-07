@@ -6,7 +6,10 @@ import { voteOnPoll } from '../routes/vote-on-poll';
 
 const app = fastify();
 
-app.register(cookie);
+app.register(cookie, {
+  secret: 'polls-app-nlw',
+  hook: 'onRequest'
+});
 
 app.register(createPoll);
 app.register(getPoll);
